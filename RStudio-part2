@@ -26,7 +26,7 @@ install.packages("keras")
 install.packages("randomForest")
 
 library(reticulate)
-use_virtualenv("/home/mischa/ml-ai", required = TRUE)
+use_virtualenv("/path/to/myvenv", required = TRUE)
 # or use_python("path/to/python", required = TRUE)
 
 install.packages("keras")
