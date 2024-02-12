@@ -1,8 +1,10 @@
-# This is from a clean install, no updates, minimal installation.
-# For use of "The Art of Machine Learning" No Starch Press 
+#  This is from a clean install, no updates, minimal installation.
+#  For use of "The Art of Machine Learning" No Starch Press 
+#
 #  Fully update the machine:
 #  sudo apt update && sudo apt upgrade -y
 #  Install uninstalled packages
+#  sudo su
 
 #!/bin/bash
 # Update package indices
