@@ -6,6 +6,8 @@
 #  Install uninstalled packages
 #  sudo su
 
+sudo apt-get install cmake
+
 #!/bin/bash
 # Update package indices
 sudo apt-get update -qq
