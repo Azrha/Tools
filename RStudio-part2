@@ -1,0 +1,13 @@
+# This is from the terminal in R.
+# For use of "The Art of Machine Learning" No Starch Press 
+
+# Install devtools package
+if (!requireNamespace("devtools", quietly = TRUE)) install.packages("devtools")
+
+# Load devtools library
+library(devtools)
+
+# Install qeML from GitHub, handling potential dependency issues
+if (!requireNamespace("qeML", quietly = TRUE)) install_github("matloff/qeML")
+
+cat("R setup with qeML is complete.")
