@@ -11,3 +11,16 @@ library(devtools)
 if (!requireNamespace("qeML", quietly = TRUE)) install_github("matloff/qeML")
 
 cat("R setup with qeML is complete.")
+
+library(regtools)
+library(qeML)
+
+install.packages("e1071")
+
+install.packages("gbm")
+
+install.packages("glmnet")
+
+install.packages("keras")
+
+install.packages("randomForest")
