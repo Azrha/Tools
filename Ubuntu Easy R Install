@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# This script is intended for use after a clean install for "The Art of Machine Learning" by No Starch Press.
+# This script is intended for use after a clean install of "Ubuntu-22.04.3" for "The Art of Machine Learning" by No Starch Press.
 
 # IMPORTANT NOTES:
 # - This script assumes you're running it on an Ubuntu system. Adjust the instructions if you're using a different distribution.
-# - The path "/path/to/myvenv" in the R portion of the script has been replaced with "myvenv", suggesting the virtual environment is in the current directory. Adjust this path as needed.
-# - Execute this script with sufficient permissions (possibly with sudo), especially for system-wide updates and installations.
+# - The path "/path/to/myvenv" in the R portion of the script has been replaced with "myvenv". Adjust this path as needed.
+# - Execute this script with sufficient permissions, especially for system-wide updates and installations.
 # - Always check for the latest versions of packages and adjust commands as needed, as software is continuously updated.
 
 # Step 1: Fully update the system
