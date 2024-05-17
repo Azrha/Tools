@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# Update system
+sudo apt update && sudo apt upgrade -y
+
+# Install dependencies
+sudo apt install curl apt-transport-https lsb-release gnupg2 -y
+
+# Add Wazuh repository
+curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | sudo apt-key add -
+echo "deb https://packages.wazuh.com/4.x/apt/ stable main" | sudo tee -a /etc/apt/sources.list.d/wazuh.list
+
+# Install Wazuh manager
+sudo apt update
+sudo apt install wazuh-manager -y
+
+sudo apt-key export 96B3EE5F29111145 | sudo tee /usr/share/keyrings/wazuh-archive-keyring.gpg > /dev/null
+deb [signed-by=/usr/share/keyrings/wazuh-archive-keyring.gpg] https://packages.wazuh.com/4.x/apt/ stable main
+sudo apt update
+
+# Install Filebeat for Wazuh
+curl -s https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+sudo apt update
+sudo apt install filebeat -y
+
+# Configure Filebeat for Wazuh
+sudo curl -so /etc/filebeat/filebeat.yml https://raw.githubusercontent.com/wazuh/wazuh/4.x/extensions/filebeat/7.x/filebeat.yml
+sudo curl -so /etc/filebeat/wazuh-template.json https://raw.githubusercontent.com/wazuh/wazuh/4.x/extensions/elasticsearch/7.x/wazuh-template.json
+sudo curl -so /etc/filebeat/wazuh-module.yml https://raw.githubusercontent.com/wazuh/wazuh/4.x/extensions/filebeat/wazuh-module.yml
+sudo systemctl daemon-reload
+sudo systemctl enable filebeat
+sudo systemctl start filebeat
+
+# Optional: Install and configure Elasticsearch
+sudo apt install elasticsearch -y
+sudo systemctl daemon-reload
+sudo systemctl enable elasticsearch.service
+sudo systemctl start elasticsearch.service
+
+# Optional: Install and configure Kibana
+sudo apt install kibana -y
+sudo systemctl daemon-reload
+sudo systemctl enable kibana.service
+sudo systemctl start kibana.service
+
+echo "Wazuh installation script has finished."
